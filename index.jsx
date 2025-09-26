@@ -3,10 +3,6 @@
 
 import TelecomBillingSystem from './src/App.jsx';
 
-// Exportar o componente refatorado
-export default TelecomBillingSystem;
-
-/*
 // Código original comentado abaixo para referência:
 import { BarChart3, Calculator, DollarSign, Download, Eye, FileText, Info, MapPin, Percent, Phone, Play, Plus, Printer, Trash2, Wifi } from 'lucide-react';
 import { useState } from 'react';
@@ -847,4 +843,4 @@ const TelecomBillingSystemOriginal = () => {
   );
 };
 
-export default TelecomBillingSystem;*/
+export default TelecomBillingSystem;
