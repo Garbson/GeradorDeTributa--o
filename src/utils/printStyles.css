@@ -1,0 +1,425 @@
+/* CSS Otimizado para Impressão e PDF */
+
+/* Estilos globais para impressão */
+@media print, (prefers-color-scheme: print) {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+    font-family: 'Arial', 'Helvetica', sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Ocultar elementos não necessários na impressão */
+  .no-print,
+  .document-viewer-modal,
+  .modal-overlay,
+  button,
+  .btn,
+  .hover\:shadow-xl,
+  .transition-all,
+  .cursor-pointer {
+    display: none !important;
+  }
+
+  /* Forçar quebras de página */
+  .page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Configuração de página */
+  @page {
+    size: A4;
+    margin: 15mm 10mm 15mm 10mm;
+  }
+
+  @page :first {
+    margin-top: 20mm;
+  }
+
+  @page :left {
+    margin-left: 15mm;
+  }
+
+  @page :right {
+    margin-right: 15mm;
+  }
+}
+
+/* Estilos específicos para documentos PDF */
+.pdf-document {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0 auto;
+  padding: 15mm;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho do documento */
+.document-header {
+  border-bottom: 2px solid #dc2626;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.company-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo-circle {
+  width: 50px;
+  height: 50px;
+  background: #dc2626;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.company-info h1 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.company-info p {
+  margin: 2px 0;
+  font-size: 10px;
+  color: #666;
+}
+
+.document-title {
+  text-align: center;
+}
+
+.document-title h2 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.generation-date {
+  font-size: 9px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Seções do documento */
+.customer-section,
+.products-section,
+.totals-section,
+.tax-breakdown {
+  margin: 20px 0;
+  page-break-inside: avoid;
+}
+
+.customer-section h3,
+.products-section h3,
+.tax-breakdown h3 {
+  background: #f8f9fa;
+  padding: 8px 12px;
+  margin: 0 0 12px 0;
+  border-left: 4px solid #dc2626;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Grid de dados do cliente */
+.customer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.customer-item {
+  padding: 6px 8px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.customer-item strong {
+  color: #333;
+}
+
+/* Tabelas */
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 11px;
+  page-break-inside: auto;
+}
+
+.products-table th,
+.products-table td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.products-table th {
+  background: #f8f9fa;
+  font-weight: bold;
+  font-size: 10px;
+  color: #333;
+  page-break-after: avoid;
+}
+
+.products-table tbody tr {
+  page-break-inside: avoid;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+/* Seção de totais */
+.totals-section {
+  background: #fef2f2;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #dc2626;
+  margin: 20px 0;
+  page-break-inside: avoid;
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.total-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #fecaca;
+  font-size: 12px;
+}
+
+.total-final {
+  font-weight: bold;
+  font-size: 14px;
+  color: #dc2626;
+  border-bottom: 2px solid #dc2626;
+  padding-top: 10px;
+  margin-top: 8px;
+}
+
+/* Grid de impostos */
+.tax-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tax-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+/* Rodapé */
+.document-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: #666;
+  page-break-inside: avoid;
+}
+
+.footer-content {
+  flex: 1;
+}
+
+.page-number {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Específico para Fatura Resumo */
+.billing-period {
+  background: #e3f2fd;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 15px 0;
+  page-break-inside: avoid;
+}
+
+.billing-period h3 {
+  margin: 0 0 8px 0;
+  color: #1976d2;
+  font-size: 13px;
+}
+
+.billing-period p {
+  margin: 3px 0;
+  font-size: 11px;
+}
+
+/* Específico para Fatura Detalhada */
+.usage-details {
+  margin: 15px 0;
+}
+
+.usage-item {
+  margin: 10px 0;
+  padding: 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  page-break-inside: avoid;
+}
+
+.usage-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 12px;
+  color: #333;
+}
+
+.usage-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #666;
+}
+
+/* Específico para Notas Fiscais */
+.nf-header {
+  text-align: center;
+  margin-bottom: 20px;
+  page-break-after: avoid;
+}
+
+.nf-title h1 {
+  font-size: 16px;
+  color: #dc2626;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.nf-title p {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+/* Informações de pagamento */
+.payment-info {
+  background: #e8f5e8;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 15px 0;
+  page-break-inside: avoid;
+}
+
+.payment-info h3 {
+  margin: 0 0 10px 0;
+  color: #2e7d32;
+  font-size: 13px;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.payment-method {
+  background: white;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.payment-method h4 {
+  margin: 0 0 4px 0;
+  font-size: 11px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.payment-method p {
+  margin: 0;
+  font-size: 9px;
+  color: #666;
+}
+
+/* Responsividade para diferentes tamanhos */
+@media (max-width: 600px) {
+  .customer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tax-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cores seguras para impressão */
+.text-red-600 { color: #dc2626 !important; }
+.text-blue-600 { color: #2563eb !important; }
+.text-green-600 { color: #16a34a !important; }
+.text-gray-600 { color: #4b5563 !important; }
+.text-gray-800 { color: #1f2937 !important; }
+
+.bg-red-50 { background-color: #fef2f2 !important; }
+.bg-blue-50 { background-color: #eff6ff !important; }
+.bg-green-50 { background-color: #f0fdf4 !important; }
+.bg-gray-50 { background-color: #f9fafb !important; }
+
+/* Garantir que elementos importantes sejam visíveis */
+.font-bold { font-weight: bold !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-medium { font-weight: 500 !important; }
